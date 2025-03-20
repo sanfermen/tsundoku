@@ -106,3 +106,9 @@ class Tsundoku {
         }
     }
 }
+
+
+export {
+    Tsundoku, 
+    Book
+};

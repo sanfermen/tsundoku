@@ -1,0 +1,16 @@
+**17.03.2025**
+- Elección del tema
+- Creación del repositorio
+- Pruebas con el git para aprender los usos del git branch
+
+**18.03.2025**
+- Elección de OpenLibrary como API para nuestra app
+- Visualización de ejemplo. Cómo nos da los datos la API sin tener ni idea de usarlas
+- Diseño de la app en pdf para que todxs tengamos la misma idea de cómo va a quedar a grandes rasgos
+- Estructura básica de HTML con las principales secciones, para que trabajemos sobre las mismas
+
+**19.03.2025**
+- Elección de nueva API, Google Books
+- Conseguir la API Key de Google Cloud e introducirla en el código
+- Escritura de instrucciones para generar la API
+- Gitignore y apiKey.js.example para dejarlo como instrucción

@@ -7,7 +7,7 @@
     <meta name="description" content="Tsundoku">
 
 <!--     <link rel="stylesheet" href="css/styles.css"> -->
-    <script defer type="module" src="./js/api.js"></script> <!--TODO Cambiar url a index-->
+    <script defer type="module" src="./js/form.js"></script> <!--TODO Cambiar url a index-->
 
     <title>Tsundoku</title>
 </head>
@@ -44,7 +44,49 @@
 
         <section id="wishlist"></section>
 
-        <section id="contact"></section>
+        <section id="contact">
+			<form id="contact__form">
+				<fieldset>
+					<legend>Datos básicos</legend>
+					<div id = "contact__form-datos">
+						<label for="name">Nombre:</label>
+						<input type="text" id="name" name="name" required>
+						<label for="email">Email:</label>
+						<input type="email" id="email" name="email"> <!--TODO required-->
+					</div>
+				</fieldset>
+				<fieldset>
+					<legend>Queremos conocerte</legend>
+					<div id="contact__form-preguntas">
+						<label for="booksnumber">¿Cuántos libros tienes sin leer? ¿Cuál es tu nivel de tsundoku?</label>
+						<input type="number" id="booksnumber" name="booksnumber">
+						<label for="favourite">Tus géneros favoritos:</label>
+						<input list="genre_list" id="favourite" name="favourite">
+						<datalist id="genre_list">
+							<option value="Historica"></option>
+							<option value="Fantasía"></option>
+							<option value="Ciencia Ficción"></option>
+							<option value="Terror"></option>
+							<option value="Thriller"></option>
+							<option value="Romántica"></option>
+							<option value="Ensayo"></option>
+							<option value="Poesía"></option>
+							<option value="Memorias"></option>
+							<option value="Contemporánea"></option>
+							<option value="No-Ficción"></option>
+						</datalist>
+						<label for="suggestions">Sugerencias:</label>
+						<textarea id="suggestions" name="suggestions" rows="3" cols="40" placeholder="Dinos si echas en falta algún libro, si necesitas más información..."></textarea>
+						<label for="suscribe">¿Quieres recibir nuestra newsletter?</label>
+						<input type="checkbox" id="suscribe" name="suscribe">
+					</div>
+				</fieldset>
+				<div id="contact__form-buttons">
+					<button type="submit">Enviar</button>
+					<button type="reset">Borrar</button>
+				</div>
+			</form>
+		</section>
     </main>
 
     <footer>

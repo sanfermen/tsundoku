@@ -44,10 +44,34 @@ function findInLocalStorageArray (toberead, book) {
 	return array.find(element => element.id === book.id);
 }
 
+// Función para guardar el formulario en local storage
+function formToLocalStorage () {
+	const formulario = document.getElementById("contact__form");
+	formulario.addEventListener("submit", (e) => {
+		e.preventDefault();
+	});
+	// Obtener los valores del formulario
+    let nombre = document.getElementById("name").value;
+    let email = document.getElementById("email").value;
+
+	 // Crear un objeto con los datos
+	 let datos = {
+        nombre: nombre,
+        email: email
+    };
+
+	// Guardar en localStorage (convertimos el objeto a string JSON)
+    localStorage.setItem("formularioDatos", JSON.stringify(datos));
+
+    alert("Datos guardados en localStorage.");
+}
+
+
 export {
 	saveToLocalStorage,
 	getFromLocalStorage,
 	addToLocalStorageArray,
 	removeFromLocalStorageArray,
-	findInLocalStorageArray
+	findInLocalStorageArray,
+	formToLocalStorage
 }

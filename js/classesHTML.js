@@ -1,4 +1,5 @@
-import { Tsundoku, Book } from "./classes";
+import { Tsundoku, Book } from "./classes.js";
+import { getBookByTitle, getBookBySubject, getBookByAuthor} from "./api.js"
 
 class BookHTML extends Book {
     constructor(title, publisherDate, pageCount, language, categories, description, imageLinks, authors, infoLink) {
@@ -139,6 +140,48 @@ class BookHTML extends Book {
             attributesCategories.append(category);
         }
     }
+}
+
+class TsundokuHTML extends Tsundoku {
+    constructor() {
+        super(); //TODO ????
+        this.initialize();        
+    }
+    initialize() {
+        // creación de elementos html
+        const browser = document.getElementById("browser");
+        const browserDiv = document.createElement('div');
+        const browserInput = document.createElement('input');
+        const browserButton = document.createElement('button');
+
+        browserInput.setAttribute("type", "text"); //añadir al input el type
+        browserInput.setAttribute("placeholder", "Escribe el título de tu siguiente lectura"); //añadir al input el placeholder
+
+        browserButton.textContent = "Buscar";//añadir el Buscar
+
+        browserDiv.setAttribute("id", "browser__searcher");
+
+        browserDiv.append(browserInput, browserButton); //meter el input y botón en el div
+        browser.appendChild(browserDiv); //meter el div en la section browser
+        
+
+        //funcionalidad al boton
+        browser.addEventListener("input", (e) => {
+            console.log(e.target.value);
+        });
+        browserButton.addEventListener("click", (e) => {
+            getBookByTitle(browserInput.value);
+        });
+
+
+    }
+
+
+}
+
+export { 
+    TsundokuHTML,
+    BookHTML
 }
 
 

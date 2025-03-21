@@ -6,6 +6,7 @@ class BookHTML extends Book {
         this.article = null;
     }
 
+    // CREACION DE ARTICLES QUE REPRESENTA A CADA TARJETA DE LIBRO
     createHTML(fatherElement) {
         this.article = document.createElement("article");
         this.article.classList.add("book", "card");
@@ -13,6 +14,7 @@ class BookHTML extends Book {
         fatherElement.appendChild(this.article);
     }
 
+    // INICIALIZA CADA ELEMENTO PARA SU VISUALIZACION
     initialize(fatherElement) {
         this.createHTML(fatherElement);
         this.render();
@@ -30,6 +32,7 @@ class BookHTML extends Book {
         this.article.classList.remove("bookmark");
     }
 
+    // VISUALIZACION DE ELEMENTOS
     render() {
         const isBookmark = findInLocalStorageArray("favorite", this);
         this.article.innerHTML = "";
@@ -71,38 +74,71 @@ class BookHTML extends Book {
 
         attributesCategories.classList.add("attribute", "categories");
         attributesCategories.textContent = this.categoriesString(this.categories);
+
+        attributesInfoLink.classList.add("attribute", "info");
+        attributesInfoLink.textContent = this.infoLink;
+
+        if (isBookmark) {
+            wishButton.textContent = "ELIMINAR"; // TODO INNERHTML
+        } else {
+            wishButton.textContent = "AÑADIR"; // TODO INNERHTML
+        }
+
+        wishButton.addEventListener("click", () => {
+            if (isBookmark) {
+                removeFromLocalStorageArray("favorite", this);
+            } else {
+                addToLocalStorageArray("favorite", this);
+            }
+
+            this.render();
+        })
+
+        attributeList.append(attributesPublisherDate, attributesPageCount, attributesLanguage, attributesDescription);
+
+        this.article.appendChild(image);
+        this.article.appendChild(attributesTitle);
+        this.article.appendChild(attributeAuthors);
+        this.article.appendChild(attributeList);
+
+        // CREACION DE LISTA DE CATEGORIAS
+        if (attributesCategories.length === 1) { // SI SOLO HAY UNA CATEGORIA SE CREA UN ELEMENTO "A"
+            const category = document.createElement("a");
+        } else {
+            this.createCategories(attributesCategories);
+        }
+        this.article.appendChild(attributesCategories);
+
+        this.article.appendChild(wishButton);
+        
+        this.article.appendChild(attributesInfoLink);
     }
 
+    // AÑADIDO DE NOMBRES DE AUTORES A UN MISMO STRING
     authorsNames(array) {
         let authorsNamesString = "";
 
-        if(array.length === 1) {
+        if (array.length === 1) {
             return array[0];
         }
-        
-        for(let i = 0; i < array.length; i++) {
+
+        for (let i = 0; i < array.length; i++) {
             authorsNamesString += array[i] + (i === array.length - 1) ? "" : ", ";
         }
 
         return authorsNamesString;
     }
 
-    categoriesString(array) {
-        let categoriesString = "";
+    // AÑADIDO DE TODAS LAS CATEGORIAS A LA LISTA EN FUNCION DE LA CANTIDAD
+    createCategories(attributesCategories) {
+        for (let i = 0; i < this.categories.length; i++) {
+            const category = document.createElement("a");
+            category.classList.add("attribute", "category");
+            category.textContent = this.categories[i];
 
-        if(array.length === 1) {
-            return array[0];
+            attributesCategories.append(category);
         }
-        
-        for(let i = 0; i < array.length; i++) {
-            categoriesString += array[i] + (i === array.length - 1) ? "" : ", ";
-        }
-
-        return categoriesString;
     }
 }
 
-class TsundokuHTML extends Tsundoku {
-    constructor()
-}
 

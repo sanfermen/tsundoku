@@ -2,7 +2,6 @@ import { apiKey } from "./apikey.js"; //para saber de qué archivo cogemos la ap
 const BASE_URL = "https://www.googleapis.com/books/v1/volumes?q="; //la url básica de la api
 
 //para el fetch con GET
-console.log('hola');
 async function fetchData(url, parameters={}) {
     try {
         const finalURL = new URL (BASE_URL + url); //para que cocatene la base url con el resto de url
@@ -10,11 +9,8 @@ async function fetchData(url, parameters={}) {
             finalURL.searchParams.append(param, parameters[param]);
         })
         finalURL.searchParams.append("key=", apiKey);
-        console.log(finalURL);
         const response = await fetch(finalURL.toString());//fetch lo importante jeje
-        console.log("Respuesta", response);
         const data = await response.json();
-        console.log("Datos: ", data);
         return data;
     }
     catch(error) {
@@ -23,11 +19,29 @@ async function fetchData(url, parameters={}) {
 }
 
 
-async function getFantasyBooks() {
-    const url = "subject:Medical";
+async function getBookBySubject(subject) {
+    const url = `subject:"${subject}"`;
     const result = await fetchData(url);
-    console.log("REsultado", result);
+
     return result;
 }
 
-getFantasyBooks();
+async function getBookByTitle(title) {
+    const url = `intitle:"${title}"`;
+    const result = await fetchData(url);
+    console.log(result);
+    return result;
+}
+
+async function getBookByAuthor(author) {
+    const url = `inauthor:"${author}"`;
+    const result = await fetchData(url);
+    console.log(result);
+    return result;
+}
+
+export {
+    getBookByTitle,
+    getBookBySubject,
+    getBookByAuthor
+}

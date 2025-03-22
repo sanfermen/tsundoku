@@ -22,7 +22,7 @@ async function fetchData(url, parameters={}) {
 async function getBookBySubject(subject) {
     const url = `subject:"${subject}"`;
     const result = await fetchData(url);
-
+    console.log(result);
     return result;
 }
 

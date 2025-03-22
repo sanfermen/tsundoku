@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Tsundoku">
 
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 <!--     <link rel="stylesheet" href="css/styles.css"> -->
     <script defer type="module" src="./js/form.js"></script> <!--TODO Cambiar url a index-->
 
@@ -17,19 +19,21 @@
         <nav id="menu">
             <div class="menu__logo">
                 <a href="">
-                    <img src="" alt="logo-header" id="logo-header">
+                    <img src="./assets/imglogo.png" alt="logo-header" id="logo-header">
                 </a>
             </div>
             <div class="menu__burger">
                 <ul class="menu__burger-links" id="nav-apartados">
-                    <li class="menu__burger-link"></li>
-                    <li class="menu__burger-link"></li>
-                    <li class="menu__burger-link"></li>
-                    <li class="menu__burger-link"></li>
+                    <li class="menu__burger-link"><i class="fa-solid fa-house-user"></i> HOME</li>
+                    <li class="menu__burger-link"><i class="fa-solid fa-book"></i> BIBLIOTECA</li>
+                    <li class="menu__burger-link"><i class="fa-solid fa-star"></i> WHISHLIST</li>
+                    <li class="menu__burger-link"><i class="fa-solid fa-envelope"></i> CONTACTO</li>
                 </ul>
 
                 <div class="menu__burger-icon" onclick="toggleNav()">
-
+					<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
+						<path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"/>
+					  </svg>
                 </div>
             </div>
         </nav>
@@ -92,14 +96,26 @@
     <footer>
         <section id="social">
 
+			<ul class="social__links" style="list-style-type: none">
+                <li class="social__link"><a href="https//linkedin.com"><i class="fa-brands fa-linkedin"></i> </a></li>
+				<li class="social__link"><a href="https//github.com"><i class="fa-brands fa-github"></i></a></li>
+            </ul>
+
         </section>
 
         <section id="members">
 
+			<ul id="members__list">
+				<li class="members__list-member">Anaís Cabado</li>
+				<li class="members__list-member">Dalila Cabrera</li>
+				<li class="members__list-member">Sandra Fernández</li>
+				<li class="members__list-member">Asier González</li>
+			</ul>
+
         </section>
 
         <section id="copyright">
-
+			<h4 id="copyright__footer"><i class="fa-regular fa-copyright"></i></i>2025</h4>
         </section>
     </footer>
 </body>

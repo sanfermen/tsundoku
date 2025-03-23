@@ -35,3 +35,9 @@
 - Creación de header y footer en el HTML
 - Empezar con estilos CSS
 - Continuar con TsundokuHTML
+
+**23.03.2025**
+- Videollamada para continuar con el trabajo del día anterior
+- Hemos conseguido visualizar en pantalla las búsquedas por título
+- Creación de wishList
+- Gestión de favoritos

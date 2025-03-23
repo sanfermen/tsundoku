@@ -8,6 +8,7 @@ async function fetchData(url, parameters={}) {
         Object.keys(parameters).forEach(param => {
             finalURL.searchParams.append(param, parameters[param]);
         })
+        finalURL.searchParams.append("maxResults=", "12"); //para limitar el número de resultados que nos da
         finalURL.searchParams.append("key=", apiKey);
         const response = await fetch(finalURL.toString());//fetch lo importante jeje
         const data = await response.json();

@@ -1,5 +1,6 @@
 import { Tsundoku, Book } from "./classes.js";
 import { getBookByTitle, getBookBySubject, getBookByAuthor} from "./api.js"
+import { getFromLocalStorage } from "./localstorage.js";
 
 class BookHTML extends Book {
     constructor(title, publisherDate, pageCount, language, categories, description, imageLinks, authors, infoLink) {
@@ -33,9 +34,9 @@ class BookHTML extends Book {
         this.article.classList.remove("bookmark");
     }
 
-    // VISUALIZACION DE ELEMENTOS
+    // VISUALIZACION DE ELEMENTOS. Tarjetas de libros
     render() {
-        const isBookmark = findInLocalStorageArray("favorite", this);
+/*         const isBookmark = findInLocalStorageArray("favorite", this); //TODO se puede quitar??? */
         this.article.innerHTML = "";
 
         const image = document.createElement("img");
@@ -53,45 +54,45 @@ class BookHTML extends Book {
         const attributesInfoLink = document.createElement("a");
         const wishButton = document.createElement("button");
 
-
-        title.textContent = this.title;
+        image.setAttribute("src", this.imageLinks.smallThumbnail);
+        attributesTitle.textContent = this.title;
 
         attributeList.classList.add("book__attributes");
 
         attributeAuthors.classList.add("attribute", "author");
-        attributeAuthors.textContent = this.authorsNames(this.authors);
+        attributeAuthors.textContent = "Autorx: " + this.authorsNames(this.authors);
 
         attributesPublisherDate.classList.add("attribute", "date");
-        attributesPublisherDate.textContent = this.publisherDate;
+        attributesPublisherDate.textContent = "Fecha de publicación: " + this.publisherDate;
 
         attributesPageCount.classList.add("attribute", "pages");
-        attributesPageCount.textContent = this.pageCount + " páginas";
+        attributesPageCount.textContent = "Páginas: " + this.pageCount;
 
         attributesLanguage.classList.add("attribute", "language");
-        attributesLanguage.textContent = this.language;
+        attributesLanguage.textContent = "Idioma: " + this.language;
 
         attributesDescription.classList.add("attribute", "description");
-        attributesDescription.textContent = this.description;
+        attributesDescription.textContent = "Sinopsis: " + this.description;
 
         attributesCategories.classList.add("attribute", "categories");
-        attributesCategories.textContent = this.categoriesString(this.categories);
+        attributesCategories.textContent = this.createCategories(attributesCategories);
 
         attributesInfoLink.classList.add("attribute", "info");
-        attributesInfoLink.textContent = this.infoLink;
+        attributesInfoLink.textContent = "Más info";
+        attributesInfoLink.setAttribute("href", this.infoLink);
 
-        if (isBookmark) {
-            wishButton.textContent = "ELIMINAR"; // TODO INNERHTML
+        if (this.fav) {
+            wishButton.textContent = "ELIMINAR"; // TODO INNERHTML icono
         } else {
-            wishButton.textContent = "AÑADIR"; // TODO INNERHTML
+            wishButton.textContent = "AÑADIR"; // TODO INNERHTML icono
         }
 
         wishButton.addEventListener("click", () => {
-            if (isBookmark) {
-                removeFromLocalStorageArray("favorite", this);
+            if (this.fav) {
+                this.removeFav();
             } else {
-                addToLocalStorageArray("favorite", this);
+                this.saveFav();
             }
-
             this.render();
         })
 
@@ -133,10 +134,13 @@ class BookHTML extends Book {
     // AÑADIDO DE TODAS LAS CATEGORIAS A LA LISTA EN FUNCION DE LA CANTIDAD
     createCategories(attributesCategories) {
         for (let i = 0; i < this.categories.length; i++) {
-            const category = document.createElement("a");
+            const category = document.createElement("li");
             category.classList.add("attribute", "category");
-            category.textContent = this.categories[i];
-
+            if (i === 0) {
+                category.textContent = "Géneros: " + this.categories[i];
+            } else {
+            category.textContent += this.categories[i];
+            }
             attributesCategories.append(category);
         }
     }
@@ -181,8 +185,8 @@ class TsundokuHTML extends Tsundoku {
         index.addEventListener("input", (e) => {
             console.log(e.target.value);
         });
-        browserButton.addEventListener("click", (e) => {
-            getBookByTitle(browserInput.value);
+        browserButton.addEventListener("click", async (e) => {
+            await getBookByTitle(browserInput.value);
         });
     }
 
@@ -202,8 +206,9 @@ class TsundokuHTML extends Tsundoku {
     initializeBrowser(){
         const browser = document.getElementById('browser');
         //boton
-        const browserDiv = document.createElement('div');
+        const browserDivInput = document.createElement('div');
         const browserInput = document.createElement('input');
+        const browserDivButton = document.createElement('div');
         const browserButton = document.createElement('button');
         //filters
         const sectionFilters = document.createElement('section');
@@ -232,13 +237,16 @@ class TsundokuHTML extends Tsundoku {
         const genreMemories = document.createElement('option');
         const genreFiction = document.createElement('option');
         const genreNonFiction = document.createElement('option');
+        //section resultados
+        const resultSection = document.createElement('section');
         
-
+        //ATRIBUTOS
         //boton
         browserInput.setAttribute("type", "text"); //añadir al input el type
         browserInput.setAttribute("placeholder", "Encuentra tu siguiente lectura"); //añadir al input el placeholder
         browserButton.textContent = "Buscar";//añadir el Buscar
-        browserDiv.setAttribute("id", "browser__advanceBrowser");
+        browserDivInput.setAttribute("id", "browser__advanceBrowser-input");
+        browserDivButton.setAttribute("id", "browser__advanceBrowser-button")
         //filters
         sectionFilters.setAttribute("id", "browser__filters");
         textCheckboxAll.textContent = "Todo";
@@ -249,7 +257,7 @@ class TsundokuHTML extends Tsundoku {
         textCheckboxTitle.setAttribute("for", "title");
         checkboxTitle.setAttribute("type", "radio");
         checkboxTitle.setAttribute("name", "filter");
-        textCheckboxAuthor.textContent = "Autor/Autora/Autore";
+        textCheckboxAuthor.textContent = "Autorx";
         textCheckboxAuthor.setAttribute("for", "author");
         checkboxAuthor.setAttribute("type", "radio");
         checkboxAuthor.setAttribute("name", "filter");
@@ -288,11 +296,15 @@ class TsundokuHTML extends Tsundoku {
         genreFiction.textContent = "Ficción";
         genreNonFiction.setAttribute("value", "nonfiction");
         genreNonFiction.textContent = "No ficción";
+        //section results
+        resultSection.setAttribute("id", "browser__results");
 
-        browserDiv.append(browserInput, browserButton); //meter el input y botón en el div
+        //APPEND
+        browserDivInput.appendChild(browserInput); //meter el input en el div
+        browserDivButton.appendChild(browserButton); //meter el botón en el div
         checkboxGenre.append(genreFiction, genreHistorical, genreFantasy, genreScifi, genreHorror, genreThriller, genreRomantic, genrePoetry, genreEssay, genreMemories, genreNonFiction);
         sectionFilters.append(checkboxAll, textCheckboxAll, checkboxTitle, textCheckboxTitle, checkboxAuthor, textCheckboxAuthor, checkboxRadioGenre, textCheckboxGenre, checkboxGenre, checkboxPublisher, textCheckboxPublisher, checkboxISBN, textCheckboxISBN);
-        browser.append(browserDiv, sectionFilters); //meter el div en la section browser
+        browser.append(browserDivInput, sectionFilters, browserDivButton, resultSection); //meter el div en la section browser
 
         // TODO añadir funcionalidad a los checkbox
         browser.addEventListener("input", (e) => {
@@ -304,10 +316,20 @@ class TsundokuHTML extends Tsundoku {
     }
 
     initializeWishlist(){
-        //TODO buscador favoritos
-        const wishlist = document.getElementById("wishlist");
-        BookHTML.render();
+        //TODO buscador favoritos //TODO crear títulos de cada página
+        const wishlistSection = document.getElementById("wishlist");
+        wishlistSection.innerHTML = "";
+        const wishlistLocalStorage = getFromLocalStorage("WISHLIST") || []; //si hay wishlist la carga, si no, array vacío
+        this.wishList.concat(wishlistLocalStorage);
+        this.wishList.forEach(book => {
+            book.initialize()
+        });
     }
+
+    addBookToWishlist(book){
+        this.wishList.push(book);
+    }
+    //TODO agregar a Bookstorage, agregar a wishlist, al catálogo, etc
 }
 
 

@@ -3,15 +3,15 @@ class Book {
 
     constructor(title, publisherDate, pageCount, language, categories, description, imageLinks, authors, infoLink) {
         this.id = ++Book.id;
-        this.title = title;
-        this.publisherDate = publisherDate;
-        this.pageCount = pageCount;
-        this.language = language; // TODO ??
-        this.categories = categories;
-        this.description = description;
-        this.imageLinks = imageLinks;
-        this.authors = authors;
-        this.infoLink = infoLink;
+        this.title = title || "Sin título";
+        this.publisherDate = publisherDate || "Sin fecha de publicación";
+        this.pageCount = pageCount || "Sin recuento de páginas";
+        this.language = language || "Sin información de idiomas"; // TODO ??
+        this.categories = categories || ["Sin géneros conocidos"];
+        this.description = description || "Sin sinopsis";
+        this.imageLinks = imageLinks || "Sin imagen de portada";
+        this.authors = authors || ["Sin autorxs conocidxs"];
+        this.infoLink = infoLink || "Sin enlace de información";
 
         this.fav = false;
     }
@@ -26,6 +26,9 @@ class Book {
 
     // FUNCION BORRAR FAVORITOS
     removeFav() {
+        if(!this.fav) {
+            return;
+        }
         this.fav = false;
     }
 }

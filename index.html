@@ -6,8 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Tsundoku">
 
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 <!--     <link rel="stylesheet" href="css/styles.css"> -->
-    <script defer type="module" src="./js/api.js"></script> <!--TODO Cambiar url a index-->
+    <script defer type="module" src="./js/index.js"></script> <!--TODO Cambiar url a index-->
 
     <title>Tsundoku</title>
 </head>
@@ -17,47 +19,105 @@
         <nav id="menu">
             <div class="menu__logo">
                 <a href="">
-                    <img src="" alt="logo-header" id="logo-header">
+                    <img src="./assets/imglogo.png" alt="logo-header" id="logo-header">
                 </a>
             </div>
             <div class="menu__burger">
                 <ul class="menu__burger-links" id="nav-apartados">
-                    <li class="menu__burger-link"></li>
-                    <li class="menu__burger-link"></li>
-                    <li class="menu__burger-link"></li>
-                    <li class="menu__burger-link"></li>
+                    <li class="menu__burger-link"><i class="fa-solid fa-book"></i> BIBLIOTECA</li>
+                    <li class="menu__burger-link"><i class="fa-solid fa-star"></i> WHISHLIST</li>
+                    <li class="menu__burger-link"><i class="fa-solid fa-envelope"></i> CONTACTO</li>
                 </ul>
 
                 <div class="menu__burger-icon" onclick="toggleNav()">
-
+					<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
+						<path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"/>
+					  </svg>
                 </div>
             </div>
         </nav>
     </header>
 
     <main>
-        <section id="index"></section>
-
-        <section id="home"></section>
+        <section id="index">
+			<p id="index__presentation">Tsundoku (積ん読) es un término japonés que se refiere al hábito de adquirir todo tipo de materiales de lectura, pero dejando que se amontonen en la vivienda sin leerlos.</br>
+				Con el término como inspiración de esta aplicación, creamos un lugar en el que almacenar los libros que queremos leer en el futuro, sin la pretensión de leerlos realmente. Busca y encuentra los libros
+				que te gustaría seguir acumulando en tu lista de <em>to be read</em>.</br>
+				Disfruta de la búsqueda, ¡y recuerda que leer libros y comprarlos son dos hobbies distintos!</p>
+		</section>
 
         <section id="browser"></section>
 
         <section id="wishlist"></section>
 
-        <section id="contact"></section>
+        <section id="contact">
+			<form id="contact__form">
+				<fieldset>
+					<legend>Datos básicos</legend>
+					<div id = "contact__form-datos">
+						<label for="name">Nombre:</label>
+						<input type="text" id="name" name="name" required>
+						<label for="email">Email:</label>
+						<input type="email" id="email" name="email" required>
+					</div>
+				</fieldset>
+				<fieldset>
+					<legend>Queremos conocerte</legend>
+					<div id="contact__form-preguntas">
+						<label for="booksnumber">¿Cuántos libros tienes sin leer?</label>
+						<input type="number" id="booksnumber" name="booksnumber">
+						<label for="favourite">Tus géneros favoritos:</label>
+						<input list="genre_list" id="favourite" name="favourite">
+						<datalist id="genre_list">
+							<option value="Historica"></option>
+							<option value="Fantasía"></option>
+							<option value="Ciencia Ficción"></option>
+							<option value="Terror"></option>
+							<option value="Thriller"></option>
+							<option value="Romántica"></option>
+							<option value="Ensayo"></option>
+							<option value="Poesía"></option>
+							<option value="Memorias"></option>
+							<option value="Contemporánea"></option>
+							<option value="No-Ficción"></option>
+						</datalist>
+						<label for="suggestions">Sugerencias:</label>
+						<textarea id="suggestions" name="suggestions" rows="3" cols="40" placeholder="Dinos si echas en falta algún libro, si necesitas más información..."></textarea>
+						<label for="suscribe">¿Quieres recibir nuestra newsletter?</label>
+						<input type="checkbox" id="suscribe" name="suscribe">
+					</div>
+				</fieldset>
+				<div id="contact__form-buttons">
+					<button type="submit">Enviar</button>
+					<button type="reset">Borrar</button>
+				</div>
+			</form>
+		</section>
     </main>
 
     <footer>
         <section id="social">
 
+			<ul class="social__links" style="list-style-type: none">
+                <li class="social__link"><a href="https//linkedin.com"><i class="fa-brands fa-linkedin"></i> </a></li>
+				<li class="social__link"><a href="https//github.com"><i class="fa-brands fa-github"></i></a></li>
+            </ul>
+
         </section>
 
         <section id="members">
 
+			<ul id="members__list">
+				<li class="members__list-member">Anaís Cabado</li>
+				<li class="members__list-member">Dalila Cabrera</li>
+				<li class="members__list-member">Sandra Fernández</li>
+				<li class="members__list-member">Asier González</li>
+			</ul>
+
         </section>
 
         <section id="copyright">
-
+			<h4 id="copyright__footer"><i class="fa-regular fa-copyright"></i></i>2025</h4>
         </section>
     </footer>
 </body>

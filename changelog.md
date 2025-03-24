@@ -25,5 +25,38 @@
 
 **21.03.2025**
 - Generador del buscador principal con DOM
-- Creación de clases HTML
+- Creación de clases HTML (TsundokuHTML)
+- Pruebas de que el código hecho hasta ahora funciona
+- Buscador principal funcional
 - Organizar el trabajo para el fin de semana
+
+**22.03.2025**
+- Videollamada para organizar el trabajo restante
+- Creación de header y footer en el HTML
+- Empezar con estilos CSS
+- Continuar con TsundokuHTML
+
+**23.03.2025**
+- Videollamada para continuar con el trabajo del día anterior
+- Hemos conseguido visualizar en pantalla las búsquedas por título
+- Creación de wishList
+- Gestión de favoritos
+
+**24.03.2025**
+- Visualización de 12 tarjetas de libros
+- Corrección de la búsqueda avanzada y sus filtros
+- Gestión de favoritos funcional
+- Creación de wishlist funcional
+- Descarte de secciones extra por falta de tiempo
+- Continuación de estilos CSS
+
+**25.03.25**
+- Terminar de afinar detalles
+- Terminar con los estilos CSS
+- Creación de PowerPoint
+- Merge a la rama main
+
+**26.03.35**
+- Presentación de proyecto
+- Celebración 
+

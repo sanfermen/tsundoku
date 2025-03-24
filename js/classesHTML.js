@@ -1,10 +1,10 @@
 import { Tsundoku, Book } from "./classes.js";
 import { getBookByTitle, getBookBySubject, getBookByAuthor} from "./api.js"
-import { getFromLocalStorage } from "./localstorage.js";
+import { addToLocalStorageArray, getFromLocalStorage, removeFromLocalStorageArray, findInLocalStorageArray } from "./localstorage.js";
 
 class BookHTML extends Book {
-    constructor(title, publisherDate, pageCount, language, categories, description, imageLinks, authors, infoLink) {
-        super(title, publisherDate, pageCount, language, categories, description, imageLinks, authors, infoLink);
+    constructor(id, title, publisherDate, pageCount, language, categories, description, imageLinks, authors, infoLink) {
+        super(id, title, publisherDate, pageCount, language, categories, description, imageLinks, authors, infoLink);
         this.article = null;
     }
 
@@ -36,7 +36,9 @@ class BookHTML extends Book {
 
     // VISUALIZACION DE ELEMENTOS. Tarjetas de libros
     render() {
-/*         const isBookmark = findInLocalStorageArray("favorite", this); //TODO se puede quitar??? */
+        console.log("THis is this", this);
+        const isBookmark = findInLocalStorageArray("favoritos", this);
+        console.log(isBookmark);
         this.article.innerHTML = "";
 
         const image = document.createElement("img");
@@ -81,17 +83,20 @@ class BookHTML extends Book {
         attributesInfoLink.textContent = "Más info";
         attributesInfoLink.setAttribute("href", this.infoLink);
 
-        if (this.fav) {
+        if (isBookmark) {
             wishButton.textContent = "ELIMINAR"; // TODO INNERHTML icono
         } else {
             wishButton.textContent = "AÑADIR"; // TODO INNERHTML icono
         }
 
         wishButton.addEventListener("click", () => {
-            if (this.fav) {
+            if (isBookmark) {
                 this.removeFav();
+                removeFromLocalStorageArray("favoritos", this);
             } else {
                 this.saveFav();
+                console.log(this);
+                addToLocalStorageArray("favoritos", this);
             }
             this.render();
         })
@@ -324,10 +329,6 @@ class TsundokuHTML extends Tsundoku {
         this.wishList.forEach(book => {
             book.initialize()
         });
-    }
-
-    addBookToWishlist(book){
-        this.wishList.push(book);
     }
     //TODO agregar a Bookstorage, agregar a wishlist, al catálogo, etc
 }

@@ -11,7 +11,6 @@ Con el término como inspiración de esta aplicación, creamos **una app para al
 - [Dalila Cabrera](https://github.com/crdalila)
 - [Sandra Fernández](https://github.com/sanfermen)
 
-***
 
 ## funcionalidad
 

@@ -41,3 +41,21 @@
 - Hemos conseguido visualizar en pantalla las búsquedas por título
 - Creación de wishList
 - Gestión de favoritos
+
+**24.03.2025**
+- Visualización de 12 tarjetas de libros
+- Corrección de la búsqueda avanzada y sus filtros
+- Gestión de favoritos funcional
+- Creación de wishlist funcional
+- Descarte de secciones extra por falta de tiempo
+- Continuación de estilos CSS
+
+**25.03.25**
+- Terminar de afinar detalles
+- Terminar con los estilos CSS
+- Creación de PowerPoint
+- Merge a la rama main
+
+**26.03.35**
+- Presentación de proyecto
+- Celebración 

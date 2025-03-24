@@ -1,4 +1,5 @@
 import { apiKey } from "./apikey.js"; //para saber de qué archivo cogemos la api key
+import { displayBook } from "./functions.js";
 const BASE_URL = "https://www.googleapis.com/books/v1/volumes?q="; //la url básica de la api
 
 //para el fetch con GET
@@ -8,8 +9,9 @@ async function fetchData(url, parameters={}) {
         Object.keys(parameters).forEach(param => {
             finalURL.searchParams.append(param, parameters[param]);
         })
+        finalURL.searchParams.append("maxResults=", 9); //TODO no está funcionando. Para limitar el número de resultados que nos da
         finalURL.searchParams.append("key=", apiKey);
-        const response = await fetch(finalURL.toString());//fetch lo importante jeje
+        const response = await fetch(finalURL.toString());
         const data = await response.json();
         return data;
     }
@@ -22,7 +24,7 @@ async function fetchData(url, parameters={}) {
 async function getBookBySubject(subject) {
     const url = `subject:"${subject}"`;
     const result = await fetchData(url);
-
+    console.log(result);
     return result;
 }
 
@@ -30,7 +32,7 @@ async function getBookByTitle(title) {
     const url = `intitle:"${title}"`;
     const result = await fetchData(url);
     console.log(result);
-    return result;
+    displayBook(result.items);
 }
 
 async function getBookByAuthor(author) {

@@ -6,7 +6,7 @@ class Book {
         this.title = title || "Sin título";
         this.publisherDate = publisherDate || "Sin fecha de publicación";
         this.pageCount = pageCount || "Sin recuento de páginas";
-        this.language = language || "Sin información de idiomas"; // TODO ??
+        this.language = language || "Sin información de idiomas";
         this.categories = categories || ["Sin géneros conocidos"];
         this.description = description || "Sin sinopsis";
         this.imageLinks = imageLinks || "Sin imagen de portada";

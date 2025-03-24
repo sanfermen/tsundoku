@@ -21,7 +21,11 @@ function displayBook(books) {
             volumeInfo.authors,
             volumeInfo.infoLink
         )
-        bookCard.initialize(resultSection);
+        if (!volumeInfo.imageLinks) { //si no hay foto, no lo enseñes
+            return
+        } else {
+            bookCard.initialize(resultSection);
+        }
     });
 }
 

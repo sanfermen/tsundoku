@@ -1,0 +1,255 @@
+/*RESET*/
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+html,body,div,span,applet,object,
+iframe,h2,h3,h4,h5,
+h6,p,blockquote,
+pre,a,
+abbr,acronym,
+address,big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+    display: block;
+}
+
+body {
+    background-color: var(--main-color-30);
+
+    font-family: "Liter", serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+ol,
+ul {
+    list-style: none;
+}
+
+blockquote,
+q {
+    quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+    content: '';
+    content: none;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: inline-block;
+}
+
+body {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--main-color-60);
+}
+/*END RESET*/
+
+/*VARIABLES*/
+:root {
+    --main-font: Oswald;
+    /* FUENTE PRINCIPAL DE LA PAGINA */
+    --main-font-weight: 400;
+    /* PESO PRINCIPAL DE CARACTERES */
+    --main-font-size: 16px;
+    /* TAMAÑO PRINCIPAL DE CARACTERES */
+    --main-color-60: #E0F7FA;
+    /* ROSA */
+    --main-color-30: #00838F;
+    /* GRIS OSCURO*/
+    --main-color-10: #DDF4F7;
+    /* GRIS CLARO*/
+    --main-border: 1px solid transparent;
+    /* BORDE GENERAL PARA ELEMENTOS */
+}
+
+/*END VARIABLES */
+/* MENU NAVEGACION */
+header {
+    width: 100vw;
+    background-color: var(--main-color-30);
+}
+
+#menu {
+    width: 100%;
+    max-width: 2000px;
+
+    display: flex;
+    flex-flow: row;
+    justify-content: space-between;
+
+    padding: 1em;
+
+    background-color: var(--main-color-30);
+}
+/* END MENU NAVEGACION */
+
+/* FORMULARIO */
+#contact {
+    width: 100vw;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+}
+
+#contact #contact__form {
+    border-radius: 5px;
+    color: black;
+
+    display: flex;
+    flex-flow: column;
+    gap: 1em;
+
+    padding: 1em;
+    margin: 2em 10%;
+
+    width: 90%;
+    min-width: 200px;
+    max-width: 1000px;
+}
+
+#contact #contact__form legend {
+    font-size: 1.5rem;
+    font-weight: 400;
+}
+
+#contact #contact__form #contact__form-datos, #contact #contact__form #contact__form-preguntas {
+    width: 100%;
+    display: flex;
+    flex-flow: column;
+    gap: .5em;
+}
+
+#contact #contact__form input,
+#contact #contact__form textarea {
+    width: 100%;
+
+    background-color: white;
+    border: 1px solid var(--main-color-30);
+    border-radius: 5px;
+
+    font-size: 1em;
+    color: black;
+
+    padding: 1em;
+}
+
+#contact #contact__form #contact__form-buttons {
+    width: 100%;
+    display: flex;
+    flex-flow: row;
+    gap: .5em;
+}
+
+#contact #contact__form #contact__form-buttons button {
+    width: 100%;
+    padding: .5em 1em;
+    background-color: var(--main-color-30);
+    color: white;
+
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+}
+/* END FORMULARIO */

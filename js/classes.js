@@ -1,8 +1,7 @@
 class Book {
-    static id = 0;
 
-    constructor(title, publisherDate, pageCount, language, categories, description, imageLinks, authors, infoLink) {
-        this.id = ++Book.id;
+    constructor(id, title, publisherDate, pageCount, language, categories, description, imageLinks, authors, infoLink) {
+        this.id = id;
         this.title = title || "Sin título";
         this.publisherDate = publisherDate || "Sin fecha de publicación";
         this.pageCount = pageCount || "Sin recuento de páginas";

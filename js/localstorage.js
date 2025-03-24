@@ -3,7 +3,7 @@ import { BookHTML } from "./classesHTML.js";
 // Guardar objetos en LocalStorage
 function saveToLocalStorage (toberead, book) {
 	const stringBook = JSON.stringify(book);
-	console.log(stringBook);
+	console.log("hola");
 	localStorage.setItem(toberead, stringBook);
 }
 
@@ -12,20 +12,24 @@ function getFromLocalStorage (toberead) {
 	const resultString = localStorage.getItem(toberead);
 	const resultJSON = JSON.parse(resultString);
 	const result = [];
-	resultJSON.forEach(book => { //crear un array de libros con el formato bookhtml
-		const bookCard = new BookHTML (
-            book.title,
-            book.publishedDate,
-            book.pageCount,
-            book.language,
-            book.categories,
-            book.description,
-            book.imageLinks,
-            book.authors,
-            book.infoLink
-		)
-		result.push(bookCard);
-	});
+	if(resultJSON !== null) {
+		resultJSON.forEach(book => { //crear un array de libros con el formato bookhtml
+			const bookCard = new BookHTML (
+				book.id,
+				book.title,
+				book.publishedDate,
+				book.pageCount,
+				book.language,
+				book.categories,
+				book.description,
+				book.imageLinks,
+				book.authors,
+				book.infoLink
+			)
+			result.push(bookCard);
+		});	
+	}
+	
 	return result;
 }
 

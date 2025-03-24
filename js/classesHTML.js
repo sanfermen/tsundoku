@@ -1,6 +1,7 @@
 import { Tsundoku, Book } from "./classes.js";
 import { getBookByTitle, getBookBySubject, getBookByAuthor, getBookByPublisher } from "./api.js"
 import { addToLocalStorageArray, getFromLocalStorage, removeFromLocalStorageArray, findInLocalStorageArray } from "./localstorage.js";
+import { displayBook, displayFavoriteBooks } from "./functions.js";
 
 
 class BookHTML extends Book {
@@ -37,9 +38,7 @@ class BookHTML extends Book {
 
     // VISUALIZACION DE ELEMENTOS. Tarjetas de libros
     render() {
-        console.log("THis is this", this);
-        const isBookmark = findInLocalStorageArray("favoritos", this);
-        console.log(isBookmark);
+        const isBookmark = findInLocalStorageArray("favorites", this);
         this.article.innerHTML = "";
 
         const image = document.createElement("img");
@@ -95,11 +94,11 @@ class BookHTML extends Book {
         wishButton.addEventListener("click", () => {
             if (isBookmark) {
                 this.removeFav();
-                removeFromLocalStorageArray("favoritos", this);
+                removeFromLocalStorageArray("favorites", this);
             } else {
                 this.saveFav();
                 console.log(this);
-                addToLocalStorageArray("favoritos", this);
+                addToLocalStorageArray("favorites", this);
             }
             this.render();
         })
@@ -293,12 +292,12 @@ class TsundokuHTML extends Tsundoku {
         const tituloWishlist = document.createElement('h1');
         tituloWishlist.textContent = "Wishlist";
         wishlistSection.innerHTML = "";
-        wishlistSection.appendChild(tituloWishlist);
-        const wishlistLocalStorage = getFromLocalStorage("WISHLIST") || []; //si hay wishlist la carga, si no, array vacío
-        this.wishList.concat(wishlistLocalStorage);
-        this.wishList.forEach(book => {
-            book.initialize()
-        });
+        const wishlistLocalStorage = getFromLocalStorage("favorites") || []; //si hay wishlist la carga, si no, array vacío
+        const wishlistLocalStorageDiv = document.createElement("div");
+        wishlistLocalStorageDiv.setAttribute("id", "wishlist__books");
+        wishlistSection.append(tituloWishlist, wishlistLocalStorageDiv);
+        displayFavoriteBooks(wishlistLocalStorage);
+        
     }
     //TODO agregar a Bookstorage, agregar a wishlist, al catálogo, etc
 }

@@ -31,7 +31,20 @@ function displayBook(books) {
     });
 }
 
+function displayFavoriteBooks(books) {
+    const resultSection = document.getElementById("wishlist__books");
+    resultSection.innerHTML = ""; //si hemos hecho búsqueda anterior, la borra
+    books.forEach(book => {
+        if (!book.imageLinks) { //si no hay foto, no lo enseñes
+            return
+        } else {
+            book.initialize(resultSection);
+        }
+    });
+}
+
 export {
     toggleNav,
-    displayBook
+    displayBook,
+    displayFavoriteBooks
 }

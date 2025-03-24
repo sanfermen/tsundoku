@@ -10,7 +10,9 @@ function displayBook(books) {
     resultSection.innerHTML = ""; //si hemos hecho búsqueda anterior, la borra
     books.forEach(book => {
         const volumeInfo = book.volumeInfo;
+        const bookId = book.id;
         const bookCard = new BookHTML(
+            bookId,
             volumeInfo.title,
             volumeInfo.publishedDate,
             volumeInfo.pageCount,

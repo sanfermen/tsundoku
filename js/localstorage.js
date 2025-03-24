@@ -1,15 +1,35 @@
+import { BookHTML } from "./classesHTML.js";
+
 // Guardar objetos en LocalStorage
 function saveToLocalStorage (toberead, book) {
 	const stringBook = JSON.stringify(book);
-	console.log(stringBook);
+	console.log("hola");
 	localStorage.setItem(toberead, stringBook);
 }
 
 // Recuperar todos los objetos guardados en el LocalStorage
 function getFromLocalStorage (toberead) {
 	const resultString = localStorage.getItem(toberead);
-	const result = JSON.parse(resultString);
-	console.log("Result from local: ", result);
+	const resultJSON = JSON.parse(resultString);
+	const result = [];
+	if(resultJSON !== null) {
+		resultJSON.forEach(book => { //crear un array de libros con el formato bookhtml
+			const bookCard = new BookHTML (
+				book.id,
+				book.title,
+				book.publishedDate,
+				book.pageCount,
+				book.language,
+				book.categories,
+				book.description,
+				book.imageLinks,
+				book.authors,
+				book.infoLink
+			)
+			result.push(bookCard);
+		});	
+	}
+	
 	return result;
 }
 
@@ -38,7 +58,7 @@ function removeFromLocalStorageArray (toberead, book) {
 	saveToLocalStorage(toberead, array);
 }
 
-// Buscar libros en lo guardado TODO comprobar si usamos la función
+// Buscar libros en lo guardado
 function findInLocalStorageArray (toberead, book) {
 	const array = getFromLocalStorage(toberead) || [];
 	return array.find(element => element.id === book.id);

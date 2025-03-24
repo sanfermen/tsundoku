@@ -177,7 +177,7 @@ class TsundokuHTML extends Tsundoku {
 
         browserInput.setAttribute("type", "text"); //añadir al input el type
         browserInput.setAttribute("placeholder", "Escribe el título de tu siguiente lectura"); //añadir al input el placeholder
-        logo.setAttribute("src", "????"); //TODO poner la dirección del logo
+        logo.setAttribute("src", "./assets/background-img.jpg"); //TODO poner la dirección del logo
 
         browserButton.textContent = "Buscar";//añadir el Buscar
 

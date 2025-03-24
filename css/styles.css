@@ -1,76 +1,22 @@
 /*RESET*/
-@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&family=Oswald:wght@200..700&display=swap');
 
 * {
     box-sizing: border-box;
 }
 
-html,body,div,span,applet,object,
-iframe,h2,h3,h4,h5,
-h6,p,blockquote,
-pre,a,
-abbr,acronym,
-address,big,
-cite,
-code,
-del,
-dfn,
-em,
-img,
-ins,
-kbd,
-q,
-s,
-samp,
-small,
-strike,
-strong,
-sub,
-sup,
-tt,
-var,
-b,
-u,
-i,
-center,
-dl,
-dt,
-dd,
-ol,
-ul,
-li,
-fieldset,
-form,
-label,
-legend,
-table,
-caption,
-tbody,
-tfoot,
-thead,
-tr,
-th,
-td,
-article,
-aside,
-canvas,
-details,
-embed,
-figure,
-figcaption,
-footer,
-header,
-hgroup,
-menu,
-nav,
-output,
-ruby,
-section,
+html,body,div,span,applet,object,iframe,h2,h3,h4,h5,h6,p,
+blockquote,pre,a,abbr,acronym,address,big,
+cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,
+tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,
+legend,table,caption,tbody,tfoot,thead,tr,th,td,article,
+aside,canvas,details,embed,figure,figcaption,
+footer,header,
+hgroup,menu,
+nav,output,
+ruby,section,
 summary,
-time,
-mark,
-audio,
-video {
+time,mark,audio,video {
     margin: 0;
     padding: 0;
     border: 0;
@@ -80,17 +26,7 @@ video {
 }
 
 /* HTML5 display-role reset for older browsers */
-article,
-aside,
-details,
-figcaption,
-figure,
-footer,
-header,
-hgroup,
-menu,
-nav,
-section {
+article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section {
     display: block;
 }
 
@@ -102,8 +38,7 @@ body {
     font-style: normal;
 }
 
-ol,
-ul {
+ol,ul {
     list-style: none;
 }
 
@@ -112,10 +47,7 @@ q {
     quotes: none;
 }
 
-blockquote:before,
-blockquote:after,
-q:before,
-q:after {
+blockquote:before,blockquote:after,q:before,q:after {
     content: '';
     content: none;
 }
@@ -144,12 +76,15 @@ body {
     align-items: center;
     background-color: var(--main-color-60);
 }
+
 /*END RESET*/
 
 /*VARIABLES*/
 :root {
-    --main-font: Oswald;
+    --main-font: "Oswald", sans-serif;
     /* FUENTE PRINCIPAL DE LA PAGINA */
+    --second-font: "Newsreader", serif;
+    /* FUENTE SECUNDARIA DE LA PAGINA */
     --main-font-weight: 400;
     /* PESO PRINCIPAL DE CARACTERES */
     --main-font-size: 16px;
@@ -168,22 +103,98 @@ body {
 /* MENU NAVEGACION */
 header {
     width: 100vw;
-    background-color: var(--main-color-30);
+    height: 5em;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    border-bottom: 2px solid var(--main-color-30);
+
+    z-index: 1;
+
+    transition: all 0.3s ease;
 }
 
 #menu {
     width: 100%;
     max-width: 2000px;
+    height: 100%;
 
     display: flex;
     flex-flow: row;
     justify-content: space-between;
+    align-items: center;
 
-    padding: 1em;
+    padding: 1em 10%;
 
+    background-color: white;
+    color: black;
+}
+
+#menu .menu__logo {
+    font-family: var(--main-font);
+    font-size: 3rem;
+}
+
+#menu .menu__burger .menu__burger-icon {
+    display: none;
+}
+
+#menu .menu__burger .menu__burger-links {
+    width: 100%;
+
+    display: flex;
+    flex-flow: row;
+    gap: 1em;
+}
+
+#menu .menu__burger .menu__burger-links .menu__burger-link {
+    font-family: var(--second-font);
+    font-size: 1.2rem;
+
+    padding: .5em 1em;
+    border-radius: 5px;
+
+    cursor: pointer;
+
+    transition: all .3s ease;
+}
+
+#menu .menu__burger .menu__burger-links .menu__burger-link:hover {
     background-color: var(--main-color-30);
+    color: white;
 }
 /* END MENU NAVEGACION */
+
+/*MAIN*/
+main {
+    margin-top: 5em;
+
+    display: flex;
+    flex-flow: column;
+    gap: 1em;
+}
+
+main #index {
+    width: 100%;
+    padding: 0 10% 2em 10%;
+    
+    font-family: var(--second-font);
+    font-size: 1.4rem;
+
+    position: relative;
+}
+
+main #index img {
+    width: 100vw;
+    object-fit: cover;
+    display: block;
+    margin: 0;
+    padding: 0;
+    left: 0;
+}
+/*END MAIN*/
 
 /* FORMULARIO */
 #contact {
@@ -191,6 +202,8 @@ header {
     display: flex;
     flex-flow: column;
     align-items: center;
+
+    font-family: var(--second-font);
 }
 
 #contact #contact__form {
@@ -201,10 +214,9 @@ header {
     flex-flow: column;
     gap: 1em;
 
-    padding: 1em;
-    margin: 2em 10%;
+    padding: 2em 10%;
 
-    width: 90%;
+    width: 100%;
     min-width: 200px;
     max-width: 1000px;
 }
@@ -214,7 +226,8 @@ header {
     font-weight: 400;
 }
 
-#contact #contact__form #contact__form-datos, #contact #contact__form #contact__form-preguntas {
+#contact #contact__form #contact__form-datos,
+#contact #contact__form #contact__form-preguntas {
     width: 100%;
     display: flex;
     flex-flow: column;
@@ -252,4 +265,38 @@ header {
     border-radius: 5px;
     font-size: 1em;
 }
+
 /* END FORMULARIO */
+
+
+/* FOOTER */
+footer {
+    width: 100vw;
+    padding: 2em;
+
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    gap: .5em;
+
+    background-color: var(--main-color-30);
+    color: white;
+}
+
+footer #social, footer #members #members__list, footer #copyright {
+    width: 100%;
+    max-width: 2000px;
+    height: 100%;
+
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+    align-items: center;
+    gap: 2em ;
+}
+/* END FOOTER */
+
+/*MEDIA*/
+
+/* END MEDIA */

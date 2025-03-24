@@ -58,7 +58,7 @@ function removeFromLocalStorageArray (toberead, book) {
 	saveToLocalStorage(toberead, array);
 }
 
-// Buscar libros en lo guardado TODO comprobar si usamos la función
+// Buscar libros en lo guardado
 function findInLocalStorageArray (toberead, book) {
 	const array = getFromLocalStorage(toberead) || [];
 	return array.find(element => element.id === book.id);

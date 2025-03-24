@@ -160,7 +160,6 @@ class TsundokuHTML extends Tsundoku {
     }
     initialize() { //lo que se ve, sin ningún cambio
         this.initializeIndex();
-        this.initializeHome();
         this.initializeBrowser();
         this.initializeWishlist();
     }
@@ -191,19 +190,6 @@ class TsundokuHTML extends Tsundoku {
         });
     }
 
-    initializeHome() { //TODO lo quitamos?? queda añadir funcionalidades a los botones 
-        const home = document.getElementById("home");
-        const tituloHome = document.createElement('h1');
-        const sectionTheMost = document.createElement("section");
-        const sectionSuggestions = document.createElement("section");
-    
-        tituloHome.textContent = "Home";
-        sectionTheMost.setAttribute("id", "home__theMost");
-        sectionSuggestions.setAttribute("id", "home__suggestions");
-
-        home.append(tituloHome, sectionTheMost, sectionSuggestions);
-
-    }
 
     initializeBrowser(){
         const browser = document.getElementById('browser');
@@ -299,7 +285,6 @@ class TsundokuHTML extends Tsundoku {
         displayFavoriteBooks(wishlistLocalStorage);
         
     }
-    //TODO agregar a Bookstorage, agregar a wishlist, al catálogo, etc
 }
 
 

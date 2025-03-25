@@ -188,6 +188,13 @@ class TsundokuHTML extends Tsundoku {
         browserButton.addEventListener("click", async (e) => {
             await getBookByTitle(browserInput.value);
         });
+
+        browserInput.addEventListener("keydown", function (event){
+            let code = event.key;
+            if (code === 'Enter'){
+                getBookByTitle(browserInput.value);
+            }
+        });
     }
 
 
@@ -270,7 +277,24 @@ class TsundokuHTML extends Tsundoku {
             } else if (selectedOption === "genre") {
                 getBookBySubject(browserInput.value);
             }
-        }) 
+        })
+
+        browserInput.addEventListener("keydown", function (event){
+            let code = event.key;
+            const selectedOption = document.querySelector('input[name="filter"]:checked').value;
+            if (code === 'Enter'){
+                if (selectedOption === "title") {
+                    getBookByTitle(browserInput.value);
+                } else if (selectedOption === "publisher") {
+                    getBookByPublisher(browserInput.value);
+                } else if (selectedOption === "author") {
+                    getBookByAuthor(browserInput.value);
+                } else if (selectedOption === "genre") {
+                    getBookBySubject(browserInput.value);
+                }
+            }
+        });
+        
     }
 
     initializeWishlist(){

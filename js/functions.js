@@ -43,8 +43,18 @@ function displayFavoriteBooks(books) {
     });
 }
 
+function showSection(sectionId) {
+	// Convertimos todas las secciones en hidden
+
+	document.querySelectorAll('.content').forEach(section => {
+		section.classList.add('hidden');
+	})
+	document.getElementById(sectionId).classList.remove('hidden');
+}
+
 export {
     toggleNav,
     displayBook,
-    displayFavoriteBooks
+    displayFavoriteBooks,
+	showSection
 }

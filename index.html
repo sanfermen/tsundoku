@@ -8,8 +8,8 @@
 
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-<!--     <link rel="stylesheet" href="css/styles.css"> -->
-    <script defer type="module" src="./js/index.js"></script> <!--TODO Cambiar url a index-->
+	<link rel="stylesheet" href="styles.css">
+    <script defer type="module" src="js/pruebas.js"></script> <!--TODO Cambiar url a index-->
 
     <title>Tsundoku</title>
 </head>
@@ -17,19 +17,25 @@
 <body>
     <header>
         <nav id="menu">
-            <div class="menu__logo">
+            <!-- <div class="menu__logo">
                 <a href="">
                     <img src="./assets/imglogo.png" alt="logo-header" id="logo-header">
                 </a>
-            </div>
+            </div> -->
             <div class="menu__burger">
                 <ul class="menu__burger-links" id="nav-apartados">
-                    <li class="menu__burger-link"><i class="fa-solid fa-book"></i> BIBLIOTECA</li>
-                    <li class="menu__burger-link"><i class="fa-solid fa-star"></i> WHISHLIST</li>
-                    <li class="menu__burger-link"><i class="fa-solid fa-envelope"></i> CONTACTO</li>
+                    <li class="menu__burger-link">
+						<a href="#browser" id="browser_menu"><i class="fa-solid fa-book"></i> BIBLIOTECA</a>
+					</li>
+                    <li class="menu__burger-link">
+						<a href="#wishlist" id="wishlist_menu"><i class="fa-solid fa-star"></i> WHISHLIST</a>
+					</li>
+                    <li class="menu__burger-link">
+						<a href="#contact" id="contact_menu"><i class="fa-solid fa-envelope"></i> CONTACTO</a>
+					</li>
                 </ul>
 
-                <div class="menu__burger-icon" onclick="toggleNav()">
+                <div class="menu__burger-icon">
 					<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
 						<path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"/>
 					  </svg>
@@ -39,18 +45,18 @@
     </header>
 
     <main>
-        <section id="index">
+        <section id="index" class="content">
 			<p id="index__presentation">Tsundoku (積ん読) es un término japonés que se refiere al hábito de adquirir todo tipo de materiales de lectura, pero dejando que se amontonen en la vivienda sin leerlos.</br>
 				Con el término como inspiración de esta aplicación, creamos un lugar en el que almacenar los libros que queremos leer en el futuro, sin la pretensión de leerlos realmente. Busca y encuentra los libros
 				que te gustaría seguir acumulando en tu lista de <em>to be read</em>.</br>
 				Disfruta de la búsqueda, ¡y recuerda que leer libros y comprarlos son dos hobbies distintos!</p>
 		</section>
 
-        <section id="browser"></section>
+        <section id="browser" class="content hidden"></section>
 
-        <section id="wishlist"></section>
+        <section id="wishlist" class="content hidden"></section>
 
-        <section id="contact">
+        <section id="contact" class="content hidden">
 			<form id="contact__form">
 				<fieldset>
 					<legend>Datos básicos</legend>
@@ -120,6 +126,7 @@
 			<h4 id="copyright__footer"><i class="fa-regular fa-copyright"></i></i>2025</h4>
         </section>
     </footer>
+
 </body>
 
 </html>

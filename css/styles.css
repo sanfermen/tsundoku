@@ -181,7 +181,7 @@ header {
 
 /*MAIN*/
 main {
-    margin-top: 5em;
+    margin-top: 0;
 
     display: flex;
     flex-flow: column;
@@ -213,7 +213,7 @@ main #index p {
 
 main #index img, #browser-img, #wishlist-img{
     width: 100vw;
-    height: 40vh;
+    height: 50vh;
     object-fit: cover;
     object-position: center;
     display: block;
@@ -227,8 +227,7 @@ main #index #index__browser {
     
     display: flex;
     justify-content: center;
-    padding: 0 10%;
-    margin-top: 1em;
+    padding: 2em 10%;
 
     gap: .2em;
 }
@@ -261,7 +260,7 @@ main #index #index__browser button, #browser #browser__advanceBrowser-input butt
     transition: all .3s ease;
 }
 
-main #index #index__browser button:hover, #browser #browser__advanceBrowser-button button:hover {
+main #index #index__browser button:hover, #browser #browser__advanceBrowser-input button:hover {
     border: 2px solid var(--main-color-30);
 
     background-color: var(--main-color-10);
@@ -330,6 +329,10 @@ main #index #index__browser button:hover, #browser #browser__advanceBrowser-butt
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: .5em;
+}
+
+#wishlist__books {
+    padding: 2em 10%;
 }
 
 .card {

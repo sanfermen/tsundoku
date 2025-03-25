@@ -17,30 +17,35 @@
 </head>
 
 <body>
-	<header>
-		<nav id="menu">
-			<div class="menu__logo">
-				<a href="">
-					<p id="logo-header">TSUNDOKU</p>
-				</a>
-			</div>
-			<div class="menu__burger">
-				<ul class="menu__burger-links" id="nav-apartados">
-					<li class="menu__burger-link">BÚSQUEDA AVANZADA</li>
-					<li class="menu__burger-link">WISHLIST</li>
-					<li class="menu__burger-link">CONTACTO</li>
-				</ul>
 
-				<div class="menu__burger-icon" onclick="toggleNav()">
-					<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
-						class="bi bi-list" viewBox="0 0 16 16">
-						<path fill-rule="evenodd"
-							d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5" />
-					</svg>
-				</div>
-			</div>
-		</nav>
-	</header>
+    <header>
+        <nav id="menu">
+            <!-- <div class="menu__logo">
+                <a href="">
+                    <img src="./assets/imglogo.png" alt="logo-header" id="logo-header">
+                </a>
+            </div> -->
+            <div class="menu__burger">
+                <ul class="menu__burger-links" id="nav-apartados">
+                    <li class="menu__burger-link">
+						<a href="#browser" id="browser_menu"><i class="fa-solid fa-book"></i> BIBLIOTECA</a>
+					</li>
+                    <li class="menu__burger-link">
+						<a href="#wishlist" id="wishlist_menu"><i class="fa-solid fa-star"></i> WHISHLIST</a>
+					</li>
+                    <li class="menu__burger-link">
+						<a href="#contact" id="contact_menu"><i class="fa-solid fa-envelope"></i> CONTACTO</a>
+					</li>
+                </ul>
+
+                <div class="menu__burger-icon">
+					<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
+						<path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"/>
+					  </svg>
+                </div>
+            </div>
+        </nav>
+    </header>
 
 	<main>
 		<section id="index">
@@ -52,11 +57,13 @@
 				Disfruta de la búsqueda, ¡y recuerda que leer libros y comprarlos son dos hobbies distintos!</p>
 		</section>
 
-		<section id="browser"></section>
 
-		<section id="wishlist"></section>
+        <section id="browser" class="content hidden"></section>
 
-		<section id="contact">
+        <section id="wishlist" class="content hidden"></section>
+
+        <section id="contact" class="content hidden">
+          
 			<form id="contact__form">
 				<fieldset>
 					<legend>DATOS BÁSICOS</legend>
@@ -136,6 +143,7 @@
 
 		<section id="copyright">
 			<h4 id="copyright__footer"><i class="fa-regular fa-copyright"></i></i>2025</h4>
+
 		</section>
 	</footer>
 </body>

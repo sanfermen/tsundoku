@@ -53,21 +53,17 @@
         <section id="contact">
 			<form id="contact__form">
 				<fieldset>
-					<legend>Datos básicos</legend>
+					<legend>DATOS BÁSICOS</legend>
 					<div id = "contact__form-datos">
-						<label for="name">Nombre:</label>
-						<input type="text" id="name" name="name" required>
-						<label for="email">Email:</label>
-						<input type="email" id="email" name="email" required>
+						<input type="text" id="name" name="name" required placeholder="Nombre">
+						<input type="email" id="email" name="email" required placeholder="Email">
 					</div>
 				</fieldset>
 				<fieldset>
-					<legend>Queremos conocerte</legend>
+					<legend>QUEREMOS CONOCERTE</legend>
 					<div id="contact__form-preguntas">
-						<label for="booksnumber">¿Cuántos libros tienes sin leer?</label>
-						<input type="number" id="booksnumber" name="booksnumber">
-						<label for="favourite">Tus géneros favoritos:</label>
-						<input list="genre_list" id="favourite" name="favourite">
+						<input type="number" id="booksnumber" name="booksnumber" placeholder="¿Cuántos libros tienes sin leer?">
+						<input list="genre_list" id="favourite" name="favourite" placeholder="Tus géneros favoritos:">
 						<datalist id="genre_list">
 							<option value="Historica"></option>
 							<option value="Fantasía"></option>
@@ -81,7 +77,7 @@
 							<option value="Contemporánea"></option>
 							<option value="No-Ficción"></option>
 						</datalist>
-						<label for="suggestions">Sugerencias:</label>
+						<Legend>SUGERENCIAS</Legend>
 						<textarea id="suggestions" name="suggestions" rows="3" cols="40" placeholder="Dinos si echas en falta algún libro, si necesitas más información..."></textarea>
 						<label for="suscribe">¿Quieres recibir nuestra newsletter?</label>
 						<input type="checkbox" id="suscribe" name="suscribe">

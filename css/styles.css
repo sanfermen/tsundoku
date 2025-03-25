@@ -100,6 +100,17 @@ body {
 }
 
 /*END VARIABLES */
+
+h1 { /* TODO CAMBIAR A H2 MAYUS */
+    font-family: var(--main-font);
+    font-size: 3rem;
+}
+
+h3 { /* TODO MAYUS */
+    font-family: var(--main-font);
+    font-size: 2rem;
+}
+
 /* MENU NAVEGACION */
 header {
     width: 100vw;
@@ -283,11 +294,6 @@ main #index #index__browser button:hover, #browser #browser__advanceBrowser-butt
     padding: 2em 10%;
 }
 
-h1 { /* TODO CAMBIAR A H2 MAYUS */
-    font-family: var(--main-font);
-    font-size: 3rem;
-}
-
 #wishlist #wishlist__books, #browser #browser__results {
     width: 100%;
 
@@ -388,11 +394,6 @@ h1 { /* TODO CAMBIAR A H2 MAYUS */
     color: var(--main-color-30);
 }
 
-h3 { /* TODO MAYUS */
-    font-family: var(--main-font);
-    font-size: 2rem;
-}
-
 .card img{
     width: 200px;
     height: 300px;
@@ -428,6 +429,7 @@ h3 { /* TODO MAYUS */
 }
 
 #contact #contact__form legend {
+    font-family: var(--main-font);
     font-size: 1.5rem;
     font-weight: 400;
 }
@@ -448,6 +450,7 @@ h3 { /* TODO MAYUS */
     border: 1px solid var(--main-color-30);
     border-radius: 5px;
 
+    font-family: var(--second-font);
     font-size: 1em;
     color: black;
 
@@ -478,7 +481,7 @@ h3 { /* TODO MAYUS */
 /* FOOTER */
 footer {
     width: 100vw;
-    padding: 2em;
+    padding: 2em 0 0 0;
 
     display: flex;
     flex-flow: column;
@@ -500,6 +503,12 @@ footer #social, footer #members #members__list, footer #copyright {
     justify-content: center;
     align-items: center;
     gap: 2em ;
+}
+
+footer #copyright {
+    background-color: black;
+    width: 100vw;
+    padding: .5em;
 }
 /* END FOOTER */
 
@@ -533,6 +542,21 @@ footer #social, footer #members #members__list, footer #copyright {
 
     main #index #index__browser input, #browser #browser__advanceBrowser-input input {
         width: 100%;
+    }
+
+
+    .card .book__attributes {
+        display: flex;
+        flex-flow: column;
+        gap: .5em;
+    }
+
+    .card .book__attributes 
+
+
+    footer #members #members__list {
+        flex-flow: column;
+        gap: .2em;
     }
 }
 /* END MEDIA */

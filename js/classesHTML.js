@@ -259,7 +259,7 @@ class TsundokuHTML extends Tsundoku {
         browserDivInput.appendChild(browserInput); //meter el input en el div
         browserDivButton.appendChild(browserButton); //meter el botón en el div
         sectionFilters.append(checkboxTitle, textCheckboxTitle, checkboxAuthor, textCheckboxAuthor, checkboxRadioGenre, textCheckboxGenre, checkboxPublisher, textCheckboxPublisher);
-        browser.append(tituloBrowser, browserDivInput, sectionFilters, disclaimer, browserDivButton, resultSection); //meter el div en la section browser
+        browser.append(tituloBrowser, browserDivInput, browserDivButton, sectionFilters, disclaimer, resultSection); //meter el div en la section browser
 
         //BOTONES CHECKBOX FUNCIONAL
 

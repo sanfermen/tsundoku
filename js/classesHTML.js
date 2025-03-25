@@ -239,6 +239,10 @@ class TsundokuHTML extends Tsundoku {
         const checkboxRadioGenre = document.createElement('input');
         const textCheckboxGenre = document.createElement('label');
 
+        const browserImg = document.createElement('img');
+        browserImg.setAttribute("src", "./assets/browser-img.jpg");
+        browserImg.setAttribute("id", "browser-img")
+
         //disclaimer
         const disclaimer = document.createElement('p');
         //section resultados
@@ -290,7 +294,7 @@ class TsundokuHTML extends Tsundoku {
         genreDiv.append(checkboxRadioGenre, textCheckboxGenre);
         publisherDiv.append(checkboxPublisher, textCheckboxPublisher);
         sectionFilters.append(titleDiv, authorDiv, genreDiv, publisherDiv);
-        browser.append(tituloBrowser, browserDivInput, sectionFilters, disclaimer, resultSection); //meter el div en la section browser
+        browser.append(browserImg, tituloBrowser, browserDivInput, sectionFilters, disclaimer, resultSection); //meter el div en la section browser
 
         //BOTONES CHECKBOX FUNCIONAL
 
@@ -326,6 +330,10 @@ class TsundokuHTML extends Tsundoku {
     }
 
     initializeWishlist(){
+        const wishlistImg = document.createElement("img");
+        wishlistImg.setAttribute("src", "./assets/wishlist-img.jpg");
+        wishlistImg.setAttribute("id", "wishlist-img");
+
         const wishlistSection = document.getElementById("wishlist");
         const tituloWishlist = document.createElement('h1');
         tituloWishlist.textContent = "WISHLIST";
@@ -333,7 +341,7 @@ class TsundokuHTML extends Tsundoku {
         const wishlistLocalStorage = getFromLocalStorage("favorites") || []; //si hay wishlist la carga, si no, array vacío
         const wishlistLocalStorageDiv = document.createElement("div");
         wishlistLocalStorageDiv.setAttribute("id", "wishlist__books");
-        wishlistSection.append(tituloWishlist, wishlistLocalStorageDiv);
+        wishlistSection.append(wishlistImg, tituloWishlist, wishlistLocalStorageDiv);
         displayFavoriteBooks(wishlistLocalStorage);
         
     }

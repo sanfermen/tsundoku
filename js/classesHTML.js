@@ -99,6 +99,8 @@ class BookHTML extends Book {
             if (isBookmark) {
                 this.removeFav();
                 removeFromLocalStorageArray("favorites", this);
+				const wishlistLocalStorage = getFromLocalStorage("favorites") || [];
+				displayFavoriteBooks(wishlistLocalStorage);
             } else {
                 this.saveFav();
                 console.log(this);
@@ -193,12 +195,18 @@ class TsundokuHTML extends Tsundoku {
 
         browserButton.addEventListener("click", async (e) => {
             await getBookByTitle(browserInput.value);
+			document.getElementById('browser').classList.remove('hidden');
+			document.getElementById('index__presentation').classList.add('hidden');
+			document.getElementById('index__browser').classList.add('hidden');
         });
 
         browserInput.addEventListener("keydown", function (event){
             let code = event.key;
             if (code === 'Enter'){
                 getBookByTitle(browserInput.value);
+				document.getElementById('browser').classList.remove('hidden');
+				document.getElementById('index__presentation').classList.add('hidden');
+				document.getElementById('index__browser').classList.add('hidden');
             }
         });
     }

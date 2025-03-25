@@ -11,7 +11,7 @@
 		crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 	<link rel="stylesheet" href="css/styles.css">
-	<script defer type="module" src="./js/pruebas.js"></script> <!--TODO Cambiar url a index-->
+	<script defer type="module" src="./js/index.js"></script>
 
 	<title>Tsundoku</title>
 </head>
@@ -20,25 +20,25 @@
 
     <header>
         <nav id="menu">
-            <!-- <div class="menu__logo">
-                <a href="">
-                    <img src="./assets/imglogo.png" alt="logo-header" id="logo-header">
+            <div class="menu__logo">
+                <a href="index.html">
+                    <p id="logo-header">TSUNDOKU</p>
                 </a>
-            </div> -->
+            </div>
             <div class="menu__burger">
                 <ul class="menu__burger-links" id="nav-apartados">
                     <li class="menu__burger-link">
-						<a href="#browser" id="browser_menu"><i class="fa-solid fa-book"></i> BIBLIOTECA</a>
+						<a href="#browser" id="browser_menu">BUSQUEDA AVANZADA</a>
 					</li>
                     <li class="menu__burger-link">
-						<a href="#wishlist" id="wishlist_menu"><i class="fa-solid fa-star"></i> WHISHLIST</a>
+						<a href="#wishlist" id="wishlist_menu">WISHLIST</a>
 					</li>
                     <li class="menu__burger-link">
-						<a href="#contact" id="contact_menu"><i class="fa-solid fa-envelope"></i> CONTACTO</a>
+						<a href="#contact" id="contact_menu">CONTACTO</a>
 					</li>
                 </ul>
 
-                <div class="menu__burger-icon">
+                <div class="menu__burger-icon" id="burger_icon">
 					<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
 						<path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"/>
 					  </svg>
@@ -48,7 +48,7 @@
     </header>
 
 	<main>
-		<section id="index">
+		<section id="index" class ="content">
 			<p id="index__presentation">Tsundoku (積ん読) es un término japonés que se refiere al hábito de adquirir todo
 				tipo de materiales de lectura, pero dejando que se amontonen en la vivienda sin leerlos.</br>
 				Con el término como inspiración de esta aplicación, creamos un lugar en el que almacenar los libros que

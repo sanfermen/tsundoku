@@ -81,14 +81,18 @@ class BookHTML extends Book {
         attributesCategories.textContent = this.createCategories(attributesCategories);
 
         attributesInfoLink.classList.add("attribute", "info");
-        attributesInfoLink.textContent = "Más info";
+        attributesInfoLink.textContent = "MÁS INFO";
         attributesInfoLink.setAttribute("href", this.infoLink);
         attributesInfoLink.setAttribute("target", "_blank");
 
         if (isBookmark) {
-            wishButton.textContent = "ELIMINAR"; // TODO INNERHTML icono
+            wishButton.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314"/>
+</svg>`; // TODO INNERHTML icono
         } else {
-            wishButton.textContent = "AÑADIR"; // TODO INNERHTML icono
+            wishButton.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
+  <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143q.09.083.176.171a3 3 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15"/>
+</svg>`; // TODO INNERHTML icono
         }
 
         wishButton.addEventListener("click", () => {
@@ -177,13 +181,15 @@ class TsundokuHTML extends Tsundoku {
 
         browserInput.setAttribute("type", "text"); //añadir al input el type
         browserInput.setAttribute("placeholder", "Escribe el título de tu siguiente lectura"); //añadir al input el placeholder
-        logo.setAttribute("src", "????"); //TODO poner la dirección del logo
+        logo.setAttribute("src", "./assets/background-img.jpg"); //TODO poner la dirección del logo
 
-        browserButton.textContent = "Buscar";//añadir el Buscar
+        browserButton.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+  <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
+</svg>`;//añadir el Buscar
 
         browserDiv.setAttribute("id", "index__browser");
         browserDiv.append(browserInput, browserButton); //meter el input y botón en el div
-        index.append(logo, presentation, browserDiv); //meter el div en la section browser
+        index.append(logo, browserDiv, presentation); //meter el div en la section browser
 
         browserButton.addEventListener("click", async (e) => {
             await getBookByTitle(browserInput.value);
@@ -208,25 +214,36 @@ class TsundokuHTML extends Tsundoku {
         const browserButton = document.createElement('button');
         //filters
         const sectionFilters = document.createElement('section');
+
+        const titleDiv = document.createElement('div');
         const checkboxTitle = document.createElement('input');
         const textCheckboxTitle = document.createElement('label');
+
+        const authorDiv = document.createElement('div');
         const checkboxAuthor = document.createElement('input');
         const textCheckboxAuthor = document.createElement('label');
+
+        const publisherDiv = document.createElement('div');
         const checkboxPublisher = document.createElement('input');
         const textCheckboxPublisher = document.createElement('label');
+
+        const genreDiv = document.createElement('div');
         const checkboxRadioGenre = document.createElement('input');
         const textCheckboxGenre = document.createElement('label');
+
         //disclaimer
         const disclaimer = document.createElement('p');
         //section resultados
         const resultSection = document.createElement('section');
         
         //ATRIBUTOS
-        tituloBrowser.textContent = "Búsqueda avanzada";
+        tituloBrowser.textContent = "BÚSQUEDA AVANZADA";
         //boton
         browserInput.setAttribute("type", "text"); //añadir al input el type
         browserInput.setAttribute("placeholder", "Encuentra tu siguiente lectura"); //añadir al input el placeholder
-        browserButton.textContent = "Buscar";//añadir el Buscar
+        browserButton.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+  <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
+</svg>`;//añadir el Buscar
         browserDivInput.setAttribute("id", "browser__advanceBrowser-input");
         browserDivButton.setAttribute("id", "browser__advanceBrowser-button")
         //filters
@@ -259,10 +276,13 @@ class TsundokuHTML extends Tsundoku {
         resultSection.setAttribute("id", "browser__results");
 
         //APPEND
-        browserDivInput.appendChild(browserInput); //meter el input en el div
-        browserDivButton.appendChild(browserButton); //meter el botón en el div
-        sectionFilters.append(checkboxTitle, textCheckboxTitle, checkboxAuthor, textCheckboxAuthor, checkboxRadioGenre, textCheckboxGenre, checkboxPublisher, textCheckboxPublisher);
-        browser.append(tituloBrowser, browserDivInput, sectionFilters, disclaimer, browserDivButton, resultSection); //meter el div en la section browser
+        browserDivInput.append(browserInput, browserButton); //meter el input en el div
+        titleDiv.append(checkboxTitle, textCheckboxTitle);
+        authorDiv.append(checkboxAuthor, textCheckboxAuthor);
+        genreDiv.append(checkboxRadioGenre, textCheckboxGenre);
+        publisherDiv.append(checkboxPublisher, textCheckboxPublisher);
+        sectionFilters.append(titleDiv, authorDiv, genreDiv, publisherDiv);
+        browser.append(tituloBrowser, browserDivInput, sectionFilters, disclaimer, resultSection); //meter el div en la section browser
 
         //BOTONES CHECKBOX FUNCIONAL
 
@@ -300,7 +320,7 @@ class TsundokuHTML extends Tsundoku {
     initializeWishlist(){
         const wishlistSection = document.getElementById("wishlist");
         const tituloWishlist = document.createElement('h1');
-        tituloWishlist.textContent = "Wishlist";
+        tituloWishlist.textContent = "WISHLIST";
         wishlistSection.innerHTML = "";
         const wishlistLocalStorage = getFromLocalStorage("favorites") || []; //si hay wishlist la carga, si no, array vacío
         const wishlistLocalStorageDiv = document.createElement("div");

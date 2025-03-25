@@ -31,7 +31,7 @@ article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section {
 }
 
 body {
-    background-color: var(--main-color-30);
+    background-color: var(--main-color-60);
 
     font-family: "Liter", serif;
     font-weight: 400;
@@ -74,7 +74,6 @@ body {
     flex-flow: column;
     justify-content: center;
     align-items: center;
-    background-color: var(--main-color-60);
 }
 
 /*END RESET*/
@@ -187,6 +186,9 @@ main {
     display: flex;
     flex-flow: column;
     gap: 1em;
+
+    width: 100vw;
+    background-color: var(--main-color-60);
 }
 
 main #index {
@@ -209,7 +211,7 @@ main #index p {
     padding: 2em 10%;
 }
 
-main #index img {
+main #index img, #browser-img, #wishlist-img{
     width: 100vw;
     height: 40vh;
     object-fit: cover;
@@ -270,6 +272,7 @@ main #index #index__browser button:hover, #browser #browser__advanceBrowser-butt
 /* BROWSER */
 #browser {
     width: 100%;
+    max-width: 2000px;
     padding: 2em 10%;
 
     display: flex;
@@ -313,7 +316,9 @@ main #index #index__browser button:hover, #browser #browser__advanceBrowser-butt
 /* WISHLIST */
 #wishlist {
     width: 100%;
-    padding: 2em 10%;
+}
+#wishlist h1 {
+    padding: 0 10%;
 }
 #wishlist.hidden {
 	display: none;
@@ -328,7 +333,7 @@ main #index #index__browser button:hover, #browser #browser__advanceBrowser-butt
 }
 
 .card {
-    max-width: 450px;
+    max-width: 400px;
     height: 600px;
     overflow: hidden;
 
@@ -437,10 +442,17 @@ main #index #index__browser button:hover, #browser #browser__advanceBrowser-butt
 #contact {
     width: 100vw;
     display: flex;
-    flex-flow: column;
-    align-items: center;
+    flex-flow: row;
+    justify-content: center;
 
     font-family: var(--second-font);
+    margin-top: 3em;
+}
+
+#contact img {
+    height: auto;
+    width: 50%;
+    max-height: 800px;
 }
 
 #contact.hidden {
@@ -509,7 +521,7 @@ main #index #index__browser button:hover, #browser #browser__advanceBrowser-butt
     border-radius: 20px;
 
     font-family: var(--main-font);
-    font-size: 1.5em;
+    font-size: 1.2em;
 
     transition: all .3s ease;
 }
@@ -559,6 +571,10 @@ footer #copyright {
 
 /*MEDIA*/
 @media (max-width: 768px) {
+    h1 {
+        font-size: 2rem;
+    }
+
     header {
         height: 3em;
     }
@@ -572,8 +588,23 @@ footer #copyright {
 
     	display: flex;
     	flex-flow: row;
+        align-items: center;
+        justify-content: center;
     	gap: .5em;
+
+        position: absolute;
+        top: 3em;
+        left: 0;
+
+        text-align: center;
+        
+        background-color: var(--main-color-30);
+        color: var(--main-color-10);
 	}	
+
+    #menu .menu__burger .menu__burger-links .menu__burger-link {
+        font-size: .8rem;
+    }
 
     #menu .menu__burger .menu__burger-icon {
         display: flex;
@@ -588,24 +619,25 @@ footer #copyright {
         margin-top: 0;
     }
 
-    main #index img {
-        height: 20vh;
-    }
-
     
     #index, #browser, #wishlist #contact {
         width: 100vw;
     }
 
-    #index #index__presentation {
+
+    #index .content{
         width: 100%;
         font-size: 1.2rem;
+        display: flex;
+        flex-flow: column;
+        gap: 1em;
     }
 
 
     main #index #index__browser input, #browser #browser__advanceBrowser-input input {
         width: 100%;
     }
+
 
 
     .card {
@@ -625,6 +657,16 @@ footer #copyright {
 
     .card .book__attributes  .description {
         display: none;
+    }
+
+
+    #contact {
+        flex-flow: column;
+    }
+    #index img, #browser-img, #wishlist-img, #contact img{
+        width: 100vw;
+        height: 200px;
+        left: 0;
     }
 
 

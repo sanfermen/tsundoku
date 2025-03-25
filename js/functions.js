@@ -1,7 +1,8 @@
 import { BookHTML, TsundokuHTML } from "./classesHTML.js";
 
 function toggleNav() { //para hamburguesa
-    let nav = document.querySelector(".nav-apartados");
+    let nav = document.querySelector(".menu__burger-links");
+	console.log(nav);
     nav.classList.toggle("active");
 }
 
@@ -43,8 +44,18 @@ function displayFavoriteBooks(books) {
     });
 }
 
+function showSection(sectionId) {
+	// Convertimos todas las secciones en hidden
+
+	document.querySelectorAll('.content').forEach(section => {
+		section.classList.add('hidden');
+	})
+	document.getElementById(sectionId).classList.remove('hidden')
+}
+
 export {
     toggleNav,
     displayBook,
-    displayFavoriteBooks
+    displayFavoriteBooks,
+	showSection
 }

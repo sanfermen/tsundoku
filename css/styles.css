@@ -177,6 +177,7 @@ header {
     background-color: var(--main-color-30);
     color: var(--main-color-10);
 }
+
 /* END MENU NAVEGACION */
 
 /*MAIN*/
@@ -195,6 +196,13 @@ main #index {
     font-size: 1.4rem;
 
     position: relative;
+}
+
+.hidden {
+	display: none;
+ }
+main #index #index__browser.hidden {
+	display: none;
 }
 
 main #index p {
@@ -271,6 +279,9 @@ main #index #index__browser button:hover, #browser #browser__advanceBrowser-butt
 
     font-family: var(--second-font);
 }
+ #browser.hidden {
+	display: none;
+ }
 
 #browser h1 {
     width: 100%;
@@ -303,6 +314,9 @@ main #index #index__browser button:hover, #browser #browser__advanceBrowser-butt
 #wishlist {
     width: 100%;
     padding: 2em 10%;
+}
+#wishlist.hidden {
+	display: none;
 }
 
 #wishlist #wishlist__books, #browser #browser__results {
@@ -340,6 +354,9 @@ main #index #index__browser button:hover, #browser #browser__advanceBrowser-butt
     display: none;
 }
 
+#nav-apartados>.menu__burger-link{
+	display:flex;
+}
 .card .book__attributes .description {
     display: -webkit-box;
     -webkit-box-orient: vertical;
@@ -424,6 +441,10 @@ main #index #index__browser button:hover, #browser #browser__advanceBrowser-butt
     align-items: center;
 
     font-family: var(--second-font);
+}
+
+#contact.hidden {
+	display: none;
 }
 
 #contact #contact__form {
@@ -545,6 +566,14 @@ footer #copyright {
     #menu .menu__burger .menu__burger-links  {
         display: none;
     }
+
+	#menu .menu__burger .menu__burger-links.active {
+		width: 100%;
+
+    	display: flex;
+    	flex-flow: row;
+    	gap: .5em;
+	}	
 
     #menu .menu__burger .menu__burger-icon {
         display: flex;

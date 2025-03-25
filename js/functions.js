@@ -1,7 +1,8 @@
 import { BookHTML, TsundokuHTML } from "./classesHTML.js";
 
 function toggleNav() { //para hamburguesa
-    let nav = document.querySelector(".nav-apartados");
+    let nav = document.querySelector(".menu__burger-links");
+	console.log(nav);
     nav.classList.toggle("active");
 }
 

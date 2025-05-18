@@ -201,7 +201,7 @@ main #index {
 }
 
 .hidden {
-	display: none;
+	display: none !important;
  }
 main #index #index__browser.hidden {
 	display: none;

@@ -2,6 +2,7 @@ import { Tsundoku, Book } from "./classes.js";
 import { getBookByTitle, getBookBySubject, getBookByAuthor, getBookByPublisher } from "./api.js"
 import { addToLocalStorageArray, getFromLocalStorage, removeFromLocalStorageArray, findInLocalStorageArray } from "./localstorage.js";
 import { displayBook, displayFavoriteBooks } from "./functions.js";
+import { showSection } from "./functions.js";
 
 
 class BookHTML extends Book {
@@ -173,6 +174,7 @@ class TsundokuHTML extends Tsundoku {
     initializeIndex() {
         // creación del logo
         const index = document.getElementById("index"); //sección index página principal
+		index.classList.add("content");
         const logo = document.createElement('img'); //logo
         const presentation = document.getElementById("index__presentation"); //texto de presentación
 
@@ -191,24 +193,20 @@ class TsundokuHTML extends Tsundoku {
 
         browserDiv.setAttribute("id", "index__browser");
         browserDiv.append(browserInput, browserButton); //meter el input y botón en el div
+		index.innerHTML = "";
         index.append(logo, browserDiv, presentation); //meter el div en la section browser
 
         browserButton.addEventListener("click", async (e) => {
             await getBookByTitle(browserInput.value);
-			document.getElementById('browser').classList.remove('hidden');
-			document.getElementById('index__presentation').classList.add('hidden');
-			document.getElementById('index__browser').classList.add('hidden');
+			showSection("browser");
         });
 
-        browserInput.addEventListener("keydown", function (event){
-            let code = event.key;
-            if (code === 'Enter'){
-                getBookByTitle(browserInput.value);
-				document.getElementById('browser').classList.remove('hidden');
-				document.getElementById('index__presentation').classList.add('hidden');
-				document.getElementById('index__browser').classList.add('hidden');
-            }
-        });
+        browserInput.addEventListener("keydown", async function (event) {
+			if (event.key === 'Enter') {
+				await getBookByTitle(browserInput.value);
+				showSection("browser");
+			}
+		});
     }
 
 
